@@ -10,7 +10,7 @@ const protectedRoutes = ['/profile/settings', '/cart']
 export default async function proxy(req: NextRequest) {
   const jwt = await getToken({ req, secret: process.env.BETTER_AUTH_SECRET })
   if (jwt == null) {
-    return NextResponse.redirect('http://localhost:3000/en/login')
+    return NextResponse.redirect('https://e-commerce-4n2c.vercel.app/en/login')
   }
   return NextResponse.next()
 }

@@ -73,7 +73,7 @@ const token = await getMyToken()
 const address = {
    shippingAddress:obj
 }
-const res = await fetch(`${process.env.BASE_URL}/api/v1/orders/checkout-session/${cartId}?url=http://localhost:3000/en`,{
+const res = await fetch(`${process.env.BASE_URL}/api/v1/orders/checkout-session/${cartId}?url=https://e-commerce-4n2c.vercel.app/en`,{
     method:'post',
     body:JSON.stringify(address),
     headers:{
