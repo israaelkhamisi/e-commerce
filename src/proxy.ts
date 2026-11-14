@@ -8,7 +8,11 @@ const intlProxy = createMiddleware(routing);
 const protectedRoutes = ['/profile/settings', '/cart']
 
 export default async function proxy(req: NextRequest) {
-  const jwt = await getToken({ req, secret: process.env.BETTER_AUTH_SECRET })
+ const jwt = await getToken({
+  req,
+  secret: process.env.BETTER_AUTH_SECRET,
+  secureCookie: req.nextUrl.protocol === 'https:',
+})
   if (jwt == null) {
   const locale = req.nextUrl.pathname.split('/')[1] || 'en'
 return NextResponse.redirect(new URL(`/${locale}/login`, req.url))
